@@ -1,0 +1,38 @@
+复制下面所有命令，一次性粘贴到终端运行：
+
+====================================
+
+# 第1步：进入目录
+cd ~/Desktop/AI合集/测试
+
+# 第2步：初始化Git（如果还没初始化）
+git init
+
+# 第3步：配置远程仓库
+git remote add origin git@github.com:lingxiyin123-cpu/-2.git
+
+# 第4步：添加所有文件
+git add .
+
+# 第5步：创建提交
+git commit -m "添加RPI关系人格指数测试H5应用"
+
+# 第6步：推送到GitHub
+git push -u origin master
+
+====================================
+
+执行完成后，访问下面链接启用GitHub Pages：
+
+https://github.com/lingxiyin123-cpu/-2/settings/pages
+
+在"GitHub Pages"部分配置：
+- Source: Deploy from a branch
+- Branch: master
+- Folder: / (root)
+- 点击 Save 按钮
+
+====================================
+
+配置成功后，访问：
+https://lingxiyin123-cpu.github.io/-2/

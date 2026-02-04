@@ -1,0 +1,64 @@
+<!-- RPI测试开始页 -->
+<view class="rpi-start-container">
+  <!-- 背景粒子效果 -->
+  <view class="particles">
+    <view class="particle" wx:for="{{20}}" wx:key="index" style="left: {{index * 5}}%; animation-delay: {{index * 0.2}}s;"></view>
+  </view>
+
+  <!-- 主内容区 -->
+  <view class="content">
+    <!-- 标题区 -->
+    <view class="header">
+      <view class="neon-title">
+        <text class="title-main">RPI</text>
+        <text class="title-sub">关系人格指数</text>
+      </view>
+      <view class="subtitle">Relationship Personality Index</view>
+    </view>
+
+    <!-- 16种人格预览 -->
+    <view class="personalities-preview">
+      <view class="preview-title">探索你的关系人格类型</view>
+      <view class="personalities-grid">
+        <view class="personality-item {{item.animate ? 'animate' : ''}}" 
+              wx:for="{{personalities}}" 
+              wx:key="code"
+              style="background: {{item.gradient}}; animation-delay: {{index * 0.1}}s;">
+          <text class="personality-code">{{item.code}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 测试特点 -->
+    <view class="features">
+      <view class="feature-item">
+        <view class="feature-icon">⚡</view>
+        <text class="feature-text">30道犀利题目</text>
+      </view>
+      <view class="feature-item">
+        <view class="feature-icon">🎯</view>
+        <text class="feature-text">16种人格类型</text>
+      </view>
+      <view class="feature-item">
+        <view class="feature-icon">🔮</view>
+        <text class="feature-text">毒舌风格解读</text>
+      </view>
+    </view>
+
+    <!-- 开始按钮 -->
+    <view class="action-area">
+      <button class="start-btn {{btnAnimated ? 'pulse' : ''}}" bindtap="startQuiz">
+        <text class="btn-text">开始测试</text>
+        <view class="btn-glow"></view>
+      </button>
+      <text class="hint">已有 {{userCount}} 人参与测试</text>
+    </view>
+  </view>
+
+  <!-- 底部装饰 -->
+  <view class="footer-decoration">
+    <view class="neon-line"></view>
+    <text class="footer-text">测测你的关系人格有多危险</text>
+    <view class="neon-line"></view>
+  </view>
+</view>

@@ -1,0 +1,71 @@
+<!-- RPI测试答题页 -->
+<view class="rpi-quiz-container">
+  <!-- 背景效果 -->
+  <view class="bg-gradient"></view>
+  
+  <!-- 顶部进度区 -->
+  <view class="header">
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{progress}}%"></view>
+      <view class="progress-glow"></view>
+    </view>
+    <view class="progress-text">
+      <text class="current">{{currentIndex + 1}}</text>
+      <text class="total">/ {{totalQuestions}}</text>
+    </view>
+  </view>
+
+  <!-- 题目区 -->
+  <view class="question-area">
+    <view class="question-number">Question {{currentIndex + 1}}</view>
+    <view class="question-text {{textAnimated ? 'fade-in' : ''}}">
+      {{currentQuestion.question}}
+    </view>
+  </view>
+
+  <!-- 选项区 -->
+  <view class="options-area">
+    <view class="option-item {{selectedIndex === index ? 'selected' : ''}} {{optionAnimated ? 'slide-up' : ''}}"
+          wx:for="{{currentQuestion.options}}"
+          wx:key="index"
+          style="animation-delay: {{index * 0.1}}s"
+          bindtap="selectOption"
+          data-index="{{index}}">
+      <view class="option-indicator">{{optionLetters[index]}}</view>
+      <text class="option-text">{{item.text}}</text>
+      <view class="option-glow"></view>
+    </view>
+  </view>
+
+  <!-- 底部导航 -->
+  <view class="footer">
+    <view class="nav-btn prev {{currentIndex === 0 ? 'disabled' : ''}}" bindtap="prevQuestion">
+      <text class="nav-icon">←</text>
+      <text class="nav-text">上一题</text>
+    </view>
+    
+    <view class="question-dots">
+      <view class="dot {{index === currentIndex ? 'active' : ''}} {{index < currentIndex ? 'completed' : ''}}"
+            wx:for="{{totalQuestions}}"
+            wx:key="index"></view>
+    </view>
+
+    <view class="nav-btn next {{!canNext ? 'disabled' : ''}}" bindtap="nextQuestion">
+      <text class="nav-text">{{currentIndex === totalQuestions - 1 ? '查看结果' : '下一题'}}</text>
+      <text class="nav-icon">{{currentIndex === totalQuestions - 1 ? '✓' : '→'}}</text>
+    </view>
+  </view>
+
+  <!-- 退出确认弹窗 -->
+  <view class="modal {{showExitModal ? 'show' : ''}}">
+    <view class="modal-mask" bindtap="hideExitModal"></view>
+    <view class="modal-content">
+      <view class="modal-title">确定要退出吗？</view>
+      <view class="modal-text">退出后答题进度将不会保存</view>
+      <view class="modal-actions">
+        <button class="modal-btn cancel" bindtap="hideExitModal">继续答题</button>
+        <button class="modal-btn confirm" bindtap="confirmExit">退出</button>
+      </view>
+    </view>
+  </view>
+</view>

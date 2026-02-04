@@ -1,0 +1,339 @@
+/* RPI测试开始页样式 - 赛博朋克霓虹风格 */
+
+page {
+  background: #0A0A0F;
+  min-height: 100vh;
+}
+
+.rpi-start-container {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx;
+  box-sizing: border-box;
+}
+
+/* 粒子背景 */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 4rpx;
+  height: 4rpx;
+  background: rgba(255, 107, 107, 0.6);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* 主内容区 */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  position: relative;
+}
+
+/* 标题区 */
+.header {
+  text-align: center;
+  margin-bottom: 60rpx;
+}
+
+.neon-title {
+  position: relative;
+  display: inline-block;
+}
+
+.title-main {
+  display: block;
+  font-size: 120rpx;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 
+    0 0 10rpx #FF6B6B,
+    0 0 20rpx #FF6B6B,
+    0 0 40rpx #FF6B6B,
+    0 0 80rpx #FF6B6B;
+  letter-spacing: 20rpx;
+  animation: neonFlicker 2s ease-in-out infinite alternate;
+}
+
+@keyframes neonFlicker {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 
+      0 0 10rpx #FF6B6B,
+      0 0 20rpx #FF6B6B,
+      0 0 40rpx #FF6B6B,
+      0 0 80rpx #FF6B6B;
+  }
+  50% {
+    opacity: 0.9;
+    text-shadow: 
+      0 0 5rpx #FF6B6B,
+      0 0 10rpx #FF6B6B,
+      0 0 20rpx #FF6B6B,
+      0 0 40rpx #FF6B6B;
+  }
+}
+
+.title-sub {
+  display: block;
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #4ECDC4;
+  margin-top: 20rpx;
+  text-shadow: 
+    0 0 10rpx #4ECDC4,
+    0 0 20rpx #4ECDC4;
+  letter-spacing: 8rpx;
+}
+
+.subtitle {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 20rpx;
+  letter-spacing: 4rpx;
+  text-transform: uppercase;
+}
+
+/* 人格预览区 */
+.personalities-preview {
+  margin-bottom: 60rpx;
+  width: 100%;
+}
+
+.preview-title {
+  text-align: center;
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 30rpx;
+  letter-spacing: 2rpx;
+}
+
+.personalities-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16rpx;
+  padding: 0 20rpx;
+}
+
+.personality-item {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transform: scale(0.8);
+  animation: gridItemFloat 3s ease-in-out infinite;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.3);
+}
+
+.personality-item.animate {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@keyframes gridItemFloat {
+  0%, 100% {
+    transform: translateY(0) scale(0.9);
+  }
+  50% {
+    transform: translateY(-10rpx) scale(0.95);
+  }
+}
+
+.personality-code {
+  font-size: 20rpx;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.3);
+}
+
+/* 特点区 */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 40rpx;
+  margin-bottom: 80rpx;
+  flex-wrap: wrap;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.feature-icon {
+  font-size: 48rpx;
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10rpx);
+  }
+}
+
+.feature-text {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 操作区 */
+.action-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30rpx;
+}
+
+.start-btn {
+  position: relative;
+  width: 400rpx;
+  height: 100rpx;
+  background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+  border: none;
+  border-radius: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 
+    0 0 20rpx rgba(255, 107, 107, 0.5),
+    0 0 40rpx rgba(78, 205, 196, 0.3);
+  transition: all 0.3s ease;
+}
+
+.start-btn::after {
+  border: none;
+}
+
+.start-btn.pulse {
+  animation: btnPulse 2s ease-in-out infinite;
+}
+
+@keyframes btnPulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 20rpx rgba(255, 107, 107, 0.5),
+      0 0 40rpx rgba(78, 205, 196, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 40rpx rgba(255, 107, 107, 0.8),
+      0 0 80rpx rgba(78, 205, 196, 0.5);
+  }
+}
+
+.btn-text {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 8rpx;
+  z-index: 2;
+}
+
+.btn-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.start-btn:active {
+  transform: scale(0.95);
+}
+
+.start-btn:active .btn-glow {
+  opacity: 1;
+}
+
+.hint {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* 底部装饰 */
+.footer-decoration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20rpx;
+  padding: 40rpx 0;
+  z-index: 1;
+}
+
+.neon-line {
+  width: 60rpx;
+  height: 2rpx;
+  background: linear-gradient(90deg, transparent, #4ECDC4, transparent);
+}
+
+.footer-text {
+  font-size: 24rpx;
+  color: #4ECDC4;
+  letter-spacing: 2rpx;
+}
+
+/* 响应式适配 */
+@media (max-height: 700px) {
+  .title-main {
+    font-size: 96rpx;
+  }
+  
+  .title-sub {
+    font-size: 40rpx;
+  }
+  
+  .personalities-preview {
+    margin-bottom: 40rpx;
+  }
+  
+  .features {
+    margin-bottom: 60rpx;
+  }
+}

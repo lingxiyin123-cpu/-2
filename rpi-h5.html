@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>RPI关系人格指数测试</title>
+  <link rel="stylesheet" href="rpi-h5.css">
+</head>
+<body>
+  <!-- 开始页 -->
+  <div id="startPage" class="page">
+    <div class="particles" id="particles"></div>
+    <div class="container">
+      <div class="badge">HOT</div>
+      <h1 class="title">🔥 RPI关系人格指数</h1>
+      <p class="subtitle">测测你的关系人格有多危险？</p>
+      
+      <div class="preview-grid">
+        <div class="preview-card">16种<br><span>人格类型</span></div>
+        <div class="preview-card">30道<br><span>犀利题目</span></div>
+        <div class="preview-card">毒舌<br><span>解读报告</span></div>
+      </div>
+      
+      <button class="start-btn" onclick="startQuiz()">
+        <span class="btn-text">开始测试</span>
+        <span class="btn-glow"></span>
+      </button>
+      
+      <p class="tip">⏱️ 预计耗时 3-5 分钟</p>
+    </div>
+  </div>
+
+  <!-- 答题页 -->
+  <div id="quizPage" class="page hidden">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+      <span class="progress-text" id="progressText">1/30</span>
+    </div>
+    
+    <div class="quiz-container">
+      <div class="question-number" id="questionNumber">第 1 题</div>
+      <h2 class="question" id="questionText">题目加载中...</h2>
+      
+      <div class="options" id="optionsContainer">
+        <!-- 选项动态生成 -->
+      </div>
+    </div>
+    
+    <div class="quiz-footer">
+      <button class="prev-btn" id="prevBtn" onclick="prevQuestion()">上一题</button>
+    </div>
+  </div>
+
+  <!-- 结果页 -->
+  <div id="resultPage" class="page hidden">
+    <div class="result-bg"></div>
+    <div class="result-container">
+      <div class="result-type" id="resultType">ADBC</div>
+      <h1 class="result-title" id="resultTitle">关系指挥官</h1>
+      
+      <div class="dimensions">
+        <div class="dimension-bar">
+          <span class="dimension-label">主动性 (A/P)</span>
+          <div class="bar-bg"><div class="bar-fill active" id="dimA"></div></div>
+        </div>
+        <div class="dimension-bar">
+          <span class="dimension-label">沟通方式 (D/I)</span>
+          <div class="bar-bg"><div class="bar-fill" id="dimD"></div></div>
+        </div>
+        <div class="dimension-bar">
+          <span class="dimension-label">边界感 (B/F)</span>
+          <div class="bar-bg"><div class="bar-fill" id="dimB"></div></div>
+        </div>
+        <div class="dimension-bar">
+          <span class="dimension-label">冲突处理 (C/E)</span>
+          <div class="bar-bg"><div class="bar-fill active" id="dimC"></div></div>
+        </div>
+      </div>
+      
+      <div class="result-content">
+        <h3>🎭 你的关系人格</h3>
+        <p class="result-description" id="resultDescription">结果加载中...</p>
+      </div>
+      
+      <!-- 广告位 -->
+      <div class="ad-placeholder">
+        <div class="ad-content">广告位</div>
+      </div>
+      
+      <div class="result-actions">
+        <button class="share-btn" onclick="shareResult()">
+          <span>📱 分享给好友</span>
+        </button>
+        <button class="retry-btn" onclick="retryQuiz()">
+          <span>🔄 重新测试</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 广告弹窗 -->
+  <div id="adModal" class="ad-modal hidden">
+    <div class="ad-modal-content">
+      <div class="ad-header">
+        <h2>🎁 专属福利</h2>
+        <button class="close-btn" onclick="closeAdModal()">✕</button>
+      </div>
+      <div class="ad-body">
+        <div class="ad-placeholder-large">
+          <div class="ad-content-large">广告位</div>
+        </div>
+      </div>
+      <div class="ad-footer">
+        <button class="ad-skip-btn" id="adSkipBtn" onclick="skipAd()" disabled>
+          跳过广告 <span id="adCountdown">3</span>s
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 导出全局变量供H5使用
+    const rpiQuestions = RPI_DATA;
+  </script>
+  <script src="rpi-data.js"></script>
+  <script src="rpi-h5.js"></script>
+</body>
+</html>

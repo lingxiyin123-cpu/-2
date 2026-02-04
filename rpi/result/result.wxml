@@ -1,0 +1,124 @@
+<!-- RPI测试结果页 -->
+<view class="rpi-result-container">
+  <!-- 背景效果 -->
+  <view class="bg-effect" style="background: {{personality.gradient}};"></view>
+  
+  <!-- 结果卡片 -->
+  <scroll-view class="result-scroll" scroll-y enable-back-to-top>
+    <view class="result-card">
+      <!-- 人格标签 -->
+      <view class="personality-header">
+        <view class="code-badge" style="background: {{personality.color}};">
+          {{result.code}}
+        </view>
+        <view class="personality-name" style="color: {{personality.color}};">
+          {{personality.name}}
+        </view>
+        <view class="personality-title">{{personality.title}}</view>
+      </view>
+
+      <!-- 维度雷达 -->
+      <view class="dimensions-section">
+        <view class="section-title">你的关系人格画像</view>
+        <view class="dimensions-bars">
+          <view class="dimension-item">
+            <view class="dim-label">主动性</view>
+            <view class="dim-bar">
+              <view class="dim-fill" style="width: {{result.scores.A}}%; background: linear-gradient(90deg, #FF6B6B, #4ECDC4);"></view>
+            </view>
+            <view class="dim-value">{{result.scores.A}}%</view>
+          </view>
+          <view class="dimension-item">
+            <view class="dim-label">表达方式</view>
+            <view class="dim-bar">
+              <view class="dim-fill" style="width: {{result.scores.D}}%; background: linear-gradient(90deg, #4ECDC4, #45B7D1);"></view>
+            </view>
+            <view class="dim-value">{{result.scores.D}}%</view>
+          </view>
+          <view class="dimension-item">
+            <view class="dim-label">边界感</view>
+            <view class="dim-bar">
+              <view class="dim-fill" style="width: {{result.scores.B}}%; background: linear-gradient(90deg, #96CEB4, #00FF88);"></view>
+            </view>
+            <view class="dim-value">{{result.scores.B}}%</view>
+          </view>
+          <view class="dimension-item">
+            <view class="dim-label">冲突处理</view>
+            <view class="dim-bar">
+              <view class="dim-fill" style="width: {{result.scores.C}}%; background: linear-gradient(90deg, #FFA502, #FF4757);"></view>
+            </view>
+            <view class="dim-value">{{result.scores.C}}%</view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 标签云 -->
+      <view class="tags-section">
+        <view class="tag-item" wx:for="{{personality.tags}}" wx:key="index">
+          {{item}}
+        </view>
+      </view>
+
+      <!-- 解读内容 -->
+      <view class="content-section">
+        <view class="summary">{{personality.summary}}</view>
+        <view class="detail-content">{{personality.content}}</view>
+      </view>
+
+      <!-- 广告位 -->
+      <view class="ad-section">
+        <view class="ad-label">广告</view>
+        <view class="ad-placeholder">
+          <text class="ad-text">广告位预留</text>
+          <text class="ad-subtext">接入微信广告组件后可展示</text>
+        </view>
+      </view>
+
+      <!-- 底部间距 -->
+      <view class="bottom-spacing"></view>
+    </view>
+  </scroll-view>
+
+  <!-- 底部操作栏 -->
+  <view class="action-bar">
+    <button class="action-btn share" open-type="share">
+      <text class="btn-icon">↗</text>
+      <text class="btn-label">分享</text>
+    </button>
+    <button class="action-btn save" bindtap="saveImage">
+      <text class="btn-icon">💾</text>
+      <text class="btn-label">保存图片</text>
+    </button>
+    <button class="action-btn retry" bindtap="retake">
+      <text class="btn-icon">↻</text>
+      <text class="btn-label">再测一次</text>
+    </button>
+  </view>
+
+  <!-- 分享卡片预览 -->
+  <view class="share-modal {{showShareModal ? 'show' : ''}}">
+    <view class="modal-mask" bindtap="hideShareModal"></view>
+    <view class="modal-content">
+      <view class="share-card" id="shareCard">
+        <view class="card-header" style="background: {{personality.gradient}};">
+          <text class="card-code">{{result.code}}</text>
+          <text class="card-name">{{personality.name}}</text>
+        </view>
+        <view class="card-body">
+          <text class="card-title">{{personality.title}}</text>
+          <text class="card-summary">{{personality.summary}}</text>
+          <view class="card-tags">
+            <text wx:for="{{personality.tags}}" wx:key="index">{{item}}</text>
+          </view>
+        </view>
+        <view class="card-footer">
+          <text class="card-qr">扫码测测你的关系人格</text>
+          <view class="card-logo">RPI</view>
+        </view>
+      </view>
+      <view class="modal-actions">
+        <button class="modal-btn" bindtap="hideShareModal">关闭</button>
+      </view>
+    </view>
+  </view>
+</view>
